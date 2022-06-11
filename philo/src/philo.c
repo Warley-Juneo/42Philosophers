@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:58:24 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 14:03:51 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:09:03 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_dead(t_table *table)
 		i = -1;
 		while (++i < table->number_philo)
 		{
-			if (table->data[i].time && settime(&table->data[0]) - table->data[i].time > table->tt_die)
+			if (settime(&table->data[0]) - table->data[i].time > table->tt_die)
 			{
 				table->dead = 1;
 				printf("%ld %d %s\n", settime(&table->data[0]), table->data[i].name, "is died");
@@ -38,6 +38,7 @@ int	check_eat(t_table *table)
 	int	flag;
 
 	i = -1;
+	flag = 0;
 	while (++i < table->number_philo)
 		if (table->data[i].qty_eat == table->qty_eat_game)
 			flag += 1;
@@ -51,7 +52,6 @@ void	*monitoring(void *table)
 	t_table	*info;
 
 	info = (t_table *)table;
-	(void)info;
 	usleep(1000);
 	while (1)
 	{

@@ -6,11 +6,19 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:42 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 14:05:27 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/11 15:09:24 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/philo.h"
+
+void	exits(t_table *table)
+{
+	free(table->data);
+	free(table->forks);
+	free(table->philo);
+	free(table);
+}
 
 void	print_status(t_data *info, char *status)
 {
@@ -46,4 +54,6 @@ int main(int argc, char *argv[])
 	initialize_table(table, argc, argv);
 	initialize_data(table, argv);
 	start_table(table);
+	exits(table);
+	return (0);
 }
