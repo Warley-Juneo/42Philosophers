@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:47 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 14:04:42 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/11 16:23:52 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,22 @@ typedef struct s_data
 	int				*status_dead;
 }				t_data;
 
+typedef struct s_forks
+{
+	pthread_mutex_t		fork;
+}			t_forks;
+
 typedef struct s_table
 {
 	size_t				time_start;
 	pthread_t			*philo;
 	pthread_t			monitoring;
 	pthread_mutex_t		protect;
-	pthread_mutex_t		*forks;
+	struct s_forks		*forks;
 	int					number_philo;
 	int					dead;
 	size_t				tt_die;
 	int					qty_eat_game;
-
 	struct	s_data		*data;
 }			t_table;
 
