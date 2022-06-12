@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:42 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 11:07:14 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:21:53 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,14 @@ int	main(int argc, char *argv[])
 	t_table		*table;
 
 	table = malloc(sizeof(t_table) * 1);
-	if (validade_arguments(argc, argv, table) == 0)
-		return (NULL);
+	if (validade_arguments(argc, argv) == 0)
+		return (1);
 	initialize_table(table, argc, argv);
 	initialize_data(table, argv);
-	start_table(table);
+	if (ft_atoi(argv[1]) == 1)
+		start_table_one(table);
+	else
+		start_table(table);
 	exits(table);
 	return (0);
 }

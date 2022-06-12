@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:58:24 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 10:51:57 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:30:21 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_dead(t_table *table)
 					table->data[i].name, "is died");
 				return (1);
 			}
-			if (verify_end_eat(table))
+			if (verify_end_eat(table) && table->qty_eat_game != 0)
 				return (1);
 		}
 	}
@@ -75,5 +75,15 @@ void	*go_table(void *data)
 		usleep(500);
 	while (!*info->status_dead)
 		start_routine(info);
+	return (NULL);
+}
+
+void	*go_table_one(void *data)
+{
+	t_data	*info;
+
+	info = (t_data *)data;
+	pthread_mutex_lock(info->fork_l);
+	print_status(info, "has taken a fork");
 	return (NULL);
 }

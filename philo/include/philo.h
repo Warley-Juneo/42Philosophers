@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:47 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 10:53:19 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:30:41 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,11 @@ void	start_table(t_table *table);
 int		ft_atoi(const char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
-
+int		validade_arguments(int argc, char *argv[]);
 void	*go_table(void *data);
+void	*go_table_one(void *data);
 void	*monitoring(void *table);
 void	start_routine(t_data *info);
 void	print_status(t_data *info, char *status);
+void	start_table_one(t_table *table);
 #endif

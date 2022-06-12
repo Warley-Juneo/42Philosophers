@@ -6,11 +6,19 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:57:17 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 10:52:47 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:34:48 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+void	start_table_one(t_table *table)
+{
+	pthread_create(&table->philo[0], NULL, &go_table_one, &table->data[0]);
+	pthread_create(&table->monitoring, NULL, &monitoring, table);
+	pthread_join(table->philo[0], NULL);
+	pthread_join(table->monitoring, NULL);
+}
 
 void	start_table(t_table *table)
 {
@@ -46,6 +54,22 @@ void	initialize_table(t_table *table, int argc, char *argv[])
 		table->qty_eat_game = ft_atoi(argv[5]);
 }
 
+void	initialize_data_aux(t_table *table)
+{
+	int	i;
+
+	i = 0;
+	table->data[i].fork_l = &table->forks[i].fork;
+	table->data[i].fork_r = &table->forks[i + 1].fork;
+	while (++i < table->number_philo - 1)
+	{
+		table->data[i].fork_l = &table->forks[i].fork;
+		table->data[i].fork_r = &table->forks[i + 1].fork;
+	}
+	table->data[i].fork_l = &table->forks[i].fork;
+	table->data[i].fork_r = &table->forks[0].fork;
+}
+
 void	initialize_data(t_table *table, char *argv[])
 {
 	int	i;
@@ -62,14 +86,8 @@ void	initialize_data(t_table *table, char *argv[])
 		table->data[i].qty_eat = 0;
 		table->data[i].time = 0;
 	}
-	i = 0;
-	table->data[i].fork_l = &table->forks[i].fork;
-	table->data[i].fork_r = &table->forks[i + 1].fork;
-	while (++i < table->number_philo - 1)
-	{
-		table->data[i].fork_l = &table->forks[i].fork;
-		table->data[i].fork_r = &table->forks[i + 1].fork;
-	}
-	table->data[i].fork_l = &table->forks[i].fork;
-	table->data[i].fork_r = &table->forks[0].fork;
+	if (table->number_philo == 1)
+		table->data[0].fork_l = &table->forks[0].fork;
+	else
+		initialize_data_aux(table);
 }
