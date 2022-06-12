@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 11:17:00 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 11:26:51 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 12:25:10 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	start_routine(t_data *info)
 {
-	pthread_mutex_lock(info->fork_l);
+	pthread_mutex_lock(info->fork_r);
 	if (!*info->status_dead)
 		print_status(info, "has taken a fork");
-	pthread_mutex_lock(info->fork_r);
+	pthread_mutex_lock(info->fork_l);
 	if (!*info->status_dead)
 		print_status(info, "has taken a fork");
 	if (!*info->status_dead)

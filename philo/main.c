@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:42 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 11:21:53 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 12:57:47 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ void	exits(t_table *table)
 	i = -1;
 	free(table->data);
 	while (++i < table->number_philo)
-	{
-		pthread_mutex_unlock(&table->forks[i].fork);
-		pthread_mutex_destroy(&table->forks[i].fork);
-	}
-	pthread_mutex_unlock(&table->protect);
+		if (table->number_philo != 1)
+			pthread_mutex_destroy(&table->forks[i].fork);
 	pthread_mutex_destroy(&table->protect);
 	free(table->forks);
 	free(table->philo);

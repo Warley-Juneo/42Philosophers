@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:47 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 11:30:41 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 12:24:15 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <stdatomic.h>
 
 typedef struct s_data
 {
 	pthread_mutex_t	*protect;
 	pthread_mutex_t	*fork_l;
 	pthread_mutex_t	*fork_r;
-	size_t			*time_start;
-	size_t			time;
-	int				name;
-	int				tt_eat;
-	int				tt_sleep;
-	int				qty_eat;
-	int				*status_dead;
+	atomic_size_t	*time_start;
+	atomic_size_t	time;
+	atomic_int		name;
+	atomic_int		tt_eat;
+	atomic_int		tt_sleep;
+	atomic_int		qty_eat;
+	atomic_int		*status_dead;
 }				t_data;
 
 typedef struct s_forks
@@ -40,15 +41,15 @@ typedef struct s_forks
 
 typedef struct s_table
 {
-	size_t				time_start;
+	atomic_size_t		time_start;
 	pthread_t			*philo;
 	pthread_t			monitoring;
 	pthread_mutex_t		protect;
 	struct s_forks		*forks;
-	int					number_philo;
-	int					dead;
-	size_t				tt_die;
-	int					qty_eat_game;
+	atomic_int			number_philo;
+	atomic_int			dead;
+	atomic_size_t		tt_die;
+	atomic_int			qty_eat_game;
 	struct s_data		*data;
 }			t_table;
 

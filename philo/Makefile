@@ -6,7 +6,7 @@
 #    By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/10 15:55:15 by wjuneo-f          #+#    #+#              #
-#    Updated: 2022/06/12 11:16:38 by wjuneo-f         ###   ########.fr        #
+#    Updated: 2022/06/12 12:55:14 by wjuneo-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJM = ${SRCM:.c=.o}
 NAME =	philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
 PTHREAD = -lpthread
 
 all:		$(NAME)
