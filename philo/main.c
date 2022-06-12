@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:42 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 16:47:08 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:07:14 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ size_t	time_start(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_table		*table;
 
 	table = malloc(sizeof(t_table) * 1);
+	if (validade_arguments(argc, argv, table) == 0)
+		return (NULL);
 	initialize_table(table, argc, argv);
 	initialize_data(table, argv);
 	start_table(table);

@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 11:17:00 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 16:38:20 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/11 18:56:30 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	start_routine(t_data *info)
 		print_status(info, "has taken a fork");
 	if (!*info->status_dead)
 		print_status(info, "is eating");
-	usleep(info->tt_eat * 1000);
 	info->qty_eat += 1;
+	usleep(info->tt_eat * 1000);
 	pthread_mutex_unlock(info->fork_l);
 	pthread_mutex_unlock(info->fork_r);
 	if (!*info->status_dead)

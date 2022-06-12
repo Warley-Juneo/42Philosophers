@@ -6,18 +6,18 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:44:47 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 16:23:52 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 10:53:19 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <sys/time.h>
-#include <pthread.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+# include <sys/time.h>
+# include <pthread.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_data
 {
@@ -49,7 +49,7 @@ typedef struct s_table
 	int					dead;
 	size_t				tt_die;
 	int					qty_eat_game;
-	struct	s_data		*data;
+	struct s_data		*data;
 }			t_table;
 
 void	initialize_table(t_table *table, int argc, char *argv[]);

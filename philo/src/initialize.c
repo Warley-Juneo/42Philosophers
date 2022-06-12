@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 13:57:17 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/11 16:38:02 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/12 10:52:47 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	initialize_table(t_table *table, int argc, char *argv[])
 	table->philo = malloc(sizeof(pthread_t) * table->number_philo);
 	table->data = malloc(sizeof(t_data) * (table->number_philo));
 	table->forks = malloc(sizeof(t_forks) * (table->number_philo));
-	while(++i < table->number_philo)
-			pthread_mutex_init(&table->forks[i].fork, NULL);
+	while (++i < table->number_philo)
+		pthread_mutex_init(&table->forks[i].fork, NULL);
 	table->time_start = time_start();
 	table->tt_die = ft_atoi(argv[2]);
 	table->qty_eat_game = 0;
