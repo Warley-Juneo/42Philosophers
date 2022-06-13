@@ -20,7 +20,7 @@ OBJM = ${SRCM:.c=.o}
 NAME =	philo
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g3
 PTHREAD = -lpthread
 
 all:		$(NAME)
