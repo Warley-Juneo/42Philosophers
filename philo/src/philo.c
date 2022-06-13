@@ -6,7 +6,7 @@
 /*   By: wjuneo-f <wjuneo-f@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 14:58:24 by wjuneo-f          #+#    #+#             */
-/*   Updated: 2022/06/12 12:26:55 by wjuneo-f         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:32:31 by wjuneo-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	*monitoring(void *table)
 	usleep(1000);
 	while (1)
 	{
+		usleep(500);
 		if (check_dead(info))
 		{
-			usleep(500);
 			info->dead = 1;
 			return (NULL);
 		}
